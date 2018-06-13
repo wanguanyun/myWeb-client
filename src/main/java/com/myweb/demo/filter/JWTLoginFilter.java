@@ -52,7 +52,7 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication auth) throws IOException, ServletException {
         String token = Jwts.builder()
                 .setSubject(auth.getName())
-                .setExpiration(new Date(System.currentTimeMillis() + 360000))//token过期时间
+                .setExpiration(new Date(System.currentTimeMillis() + 3600000))//token过期时间
                 .signWith(SignatureAlgorithm.HS512, "spring-security-@Jwt!&Secret^#") //采用什么算法是可以自己选择的，不一定非要采用HS512
                 .compact();
         res.setHeader("Access-Control-Expose-Headers", "Authorization");
